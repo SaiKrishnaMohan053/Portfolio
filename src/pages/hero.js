@@ -28,7 +28,11 @@ const Hero = () => {
               <Button variant="primary" href="#projects">
                 View Projects
               </Button>
-              <Button variant="outline-primary" href="/resume.pdf" target="_blank">
+              <Button
+                variant="outline-primary"
+                href="/assets/resume_sai_krishna_mohan_kolla.pdf"
+                download="Sai_Krishna_Mohan_Kolla_Resume.pdf"
+              >
                 Download CV
               </Button>
             </div>
@@ -41,9 +45,10 @@ const Hero = () => {
                 style={{ width: "250px", height: "250px" }}
               >
                 <img
-                  src=""
+                  src="/assets/passport_photo.jpg"
                   alt="Developer Portrait"
                   className="img-fluid rounded-circle"
+                  style={{ width: "90%", height: "90%", objectFit: "cover" }}
                 />
               </div>
               <div className="position-absolute bottom-0 end-0 bg-white p-3 rounded-circle shadow">

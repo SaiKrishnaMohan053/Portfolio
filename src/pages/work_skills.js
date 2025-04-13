@@ -23,35 +23,27 @@ const workExperiences = [
 const skillLinks = {
   React: "https://reactjs.org",
   JavaScript: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-  "Tailwind CSS": "https://tailwindcss.com",
+  "Bootstrap": "https://getbootstrap.com/",
   "HTML/CSS": "https://developer.mozilla.org/en-US/docs/Web/HTML",
   "Node.js": "https://nodejs.org",
   Express: "https://expressjs.com",
   Python: "https://www.python.org",
   Django: "https://www.djangoproject.com",
   MongoDB: "https://www.mongodb.com",
-  MySQL: "https://www.mysql.com",
   Git: "https://git-scm.com",
-  Docker: "https://www.docker.com",
   AWS: "https://aws.amazon.com",
   "CI/CD": "https://circleci.com",
 };
 
 const additionalTechLinks = {
   Redux: "https://redux.js.org",
-  "Vue.js": "https://vuejs.org",
-  Webpack: "https://webpack.js.org",
-  Sass: "https://sass-lang.com",
   Jest: "https://jestjs.io",
-  "REST API": "https://restfulapi.net",
-  Firebase: "https://firebase.google.com",
-  Netlify: "https://www.netlify.com",
+  "RESTful API": "https://restfulapi.net",
   Vercel: "https://vercel.com",
+  Render: "https://render.com/",
   "Material UI": "https://mui.com",
-  "Responsive Design":
-    "https://www.smashingmagazine.com/2011/01/guidelines-for-responsive-web-design/",
+  "Responsive Design": "https://www.smashingmagazine.com/2011/01/guidelines-for-responsive-web-design/",
   Agile: "https://www.agilealliance.org",
-  Scrum: "https://www.scrum.org",
 };
 
 const skillCategories = [
@@ -61,7 +53,7 @@ const skillCategories = [
     skills: [
       { name: "React", level: 90 },
       { name: "JavaScript", level: 85 },
-      { name: "Tailwind CSS", level: 95 },
+      { name: "Bootstrap", level: 95 },
       { name: "HTML/CSS", level: 95 },
     ],
   },
@@ -71,8 +63,6 @@ const skillCategories = [
     skills: [
       { name: "Node.js", level: 85 },
       { name: "Express", level: 90 },
-      { name: "Python", level: 75 },
-      { name: "Django", level: 70 },
     ],
   },
   {
@@ -80,7 +70,6 @@ const skillCategories = [
     icon: <Database className="text-primary" size={24} />,
     skills: [
       { name: "MongoDB", level: 85 },
-      { name: "MySQL", level: 75 },
     ],
   },
   {
@@ -88,7 +77,6 @@ const skillCategories = [
     icon: <Terminal className="text-primary" size={24} />,
     skills: [
       { name: "Git", level: 90 },
-      { name: "Docker", level: 80 },
       { name: "AWS", level: 75 },
       { name: "CI/CD", level: 85 },
     ],
@@ -193,18 +181,13 @@ const WorkSkills = () => {
             <div className="d-flex flex-wrap justify-content-center gap-2">
               {[
                 "Redux",
-                "Webpack",
-                "Bootstrap",
-                "Sass",
                 "Jest",
-                "REST API",
-                "Firebase",
-                "Netlify",
+                "RESTful API",
                 "Vercel",
+                "Render",
                 "Material UI",
                 "Responsive Design",
                 "Agile",
-                "Scrum",
               ].map((tech, index) => (
                 <span
                   key={index}

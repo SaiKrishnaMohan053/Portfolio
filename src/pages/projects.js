@@ -1,40 +1,28 @@
 // Projects.js
 import React from "react";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { Github } from "lucide-react";
 
 const projects = [
   {
     id: 1,
-    title: "Task Management App",
+    title: "AI-Enhanced E-commerce Platform",
     description:
-      "A collaborative task management application with real-time updates and team collaboration features.",
+      "A full-stack web app built with React, Node.js, and MongoDB. It supports product variants, real-time stock updates, secure JWT-based login, and AWS S3 image uploads. Designed to streamline admin management while offering a clean, responsive shopping experience for users.",
     image:
       "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1332&q=80",
-    technologies: ["React", "Firebase", "Tailwind CSS", "Context API"],
-    liveLink: "https://example.com",
-    githubLink: "https://github.com",
-  },
-  {
-    id: 2,
-    title: "Real Estate Listing Platform",
-    description:
-      "A property listing platform with advanced search, filtering, and user authentication.",
-    image:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1073&q=80",
-    technologies: ["Next.js", "PostgreSQL", "Prisma", "AWS S3", "Mapbox"],
-    liveLink: "https://example.com",
-    githubLink: "https://github.com",
-  },
-  {
-    id: 3,
-    title: "Content Management System",
-    description:
-      "A custom CMS built for content creators with markdown support and media management.",
-    image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    technologies: ["Express", "MongoDB", "React", "Redux", "AWS"],
-    liveLink: "https://example.com",
-    githubLink: "https://github.com",
+    technologies: [
+      "React.js",
+      "Redux Toolkit",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Material UI",
+    ],
+    liveLink: "https://e-commerce-frontend-blue-mu.vercel.app/",
+    githubLink: {
+      frontend: "https://github.com/SaiKrishnaMohan053/E-Commerce_frontend",
+      backend: "https://github.com/SaiKrishnaMohan053/E-Commerce_backend",
+    },
   },
 ];
 
@@ -42,9 +30,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-5 bg-white">
       <div className="container">
-        <h2 className="display-6 fw-bold text-dark mb-3 text-center">
-          Projects
-        </h2>
+        <h2 className="display-6 fw-bold text-dark mb-3 text-center">Projects</h2>
         <div className="row">
           {projects.map((project) => (
             <div key={project.id} className="col-md-6 col-lg-4 mb-4">
@@ -68,52 +54,37 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="d-flex gap-2">
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-dark"
-                        aria-label="View live site"
-                      >
-                        <ExternalLink size={20} />
-                      </a>
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-dark"
-                        aria-label="View GitHub repository"
-                      >
-                        <Github size={20} />
-                      </a>
-                    </div>
+                  <a 
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                    style={{ marginBottom: "15px" }}
+                  >Live Link</a>
+                  <div className="d-flex gap-3">
                     <a
-                      href={project.liveLink}
+                      href={project.githubLink.frontend}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary fw-semibold text-decoration-none"
+                      className="text-dark d-flex align-items-center gap-1"
+                      aria-label="Frontend GitHub repository"
                     >
-                      View Project <ArrowRight size={16} />
+                      <Github size={20} /> Frontend
+                    </a>
+                    <a
+                      href={project.githubLink.backend}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-dark d-flex align-items-center gap-1"
+                      aria-label="Backend GitHub repository"
+                    >
+                      <Github size={20} /> Backend
                     </a>
                   </div>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-4">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-dark"
-          >
-            <Github size={20} className="me-2" />
-            View More on GitHub
-          </a>
         </div>
       </div>
     </section>
