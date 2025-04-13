@@ -23,7 +23,7 @@ const ContactModal = ({ show, handleClose }) => {
             Send Email
           </a>
           <a
-            href="https://www.linkedin.com/in/sai-krishna-mohan-691982157"
+            href="https://www.linkedin.com/in/sai-krishna-mohan-kolla-691982157/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-outline-dark d-flex align-items-center gap-2"
