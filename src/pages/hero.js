@@ -30,7 +30,7 @@ const Hero = () => {
               </Button>
               <Button
                 variant="outline-primary"
-                href="/assets/resume_sai_krishna_mohan_kolla.pdf"
+                href="/assets/Sai_Krishna_Mohan_Kolla_Resume.pdf"
                 download="Sai_Krishna_Mohan_Kolla_Resume.pdf"
               >
                 Download CV
