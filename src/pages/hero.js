@@ -45,10 +45,15 @@ const Hero = () => {
                 style={{ width: "250px", height: "250px" }}
               >
                 <img
-                  src="/assets/passport_photo.jpg"
-                  alt="Developer Portrait"
-                  className="img-fluid rounded-circle"
-                  style={{ width: "90%", height: "90%", objectFit: "cover" }}
+                  src="/assets/passport_photo.jpeg"
+                  alt="Sai Krishna Mohan"
+                  className="rounded-circle"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",    
+                    objectPosition: "top", 
+                  }}
                 />
               </div>
               <div className="position-absolute bottom-0 end-0 bg-white p-3 rounded-circle shadow">
