@@ -9,7 +9,7 @@ const projects = [
     description:
       "A full-stack web app built with React, Node.js, and MongoDB. It supports product variants, real-time stock updates, secure JWT-based login, and AWS S3 image uploads. Designed to streamline admin management while offering a clean, responsive shopping experience for users.",
     image:
-      "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1332&q=80",
+      "https://www.technivision.com/wp-content/uploads/2013/05/ecommerce.jpg",
     technologies: [
       "React.js",
       "Redux Toolkit",
