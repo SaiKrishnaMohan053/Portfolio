@@ -4,7 +4,7 @@ import { Layout, Server, Database, Terminal } from "lucide-react";
 const workExperiences = [
   {
     id: 1,
-    title: "Full Stack Developer",
+    title: "Frontend Developer",
     company: "Ramphal Technologies Private Ltd",
     duration: "Jan 2020 - June 2023",
     description:
