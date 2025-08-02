@@ -1,98 +1,105 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Code } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import './header.css';
+
+const headerVariants = {
+  hidden: { y: -60, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+};
+
+const mobileNavVariants = {
+  hidden: { height: 0, opacity: 0 },
+  visible: { height: 'auto', opacity: 1, transition: { duration: 0.3 } }
+};
+
+const navLinks = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Work', href: '#work' },
+  { name: 'Contact', href: '#contact' },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled]   = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Work', href: '#work' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
-    <header
-      className={`fixed-top ${isScrolled ? 'bg-white shadow py-2' : 'bg-transparent py-4'} transition`}
+    <motion.header
+      className={`app-header ${isScrolled ? 'scrolled' : ''}`}
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
     >
-      <div className="container">
-        <div className="d-flex justify-content-between align-items-center">
-          <a
-            href="#home"
-            className="d-flex align-items-center gap-2 text-primary fs-4 fw-bold text-decoration-none"
-          >
-            <Code size={24} />
-            <span>SaiKrishnaMohan_Kolla</span>
-          </a>
+      <div className="container d-flex align-items-center justify-content-between">
+        {/* Logo */}
+        <a href="#home" className="logo">
+          <Code size={28} />
+          <span>SaiKrishnaMohan_Kolla</span>
+        </a>
 
-          <nav className="d-none d-md-flex align-items-center gap-4">
-            {navLinks.map((link) => (
+        {/* Desktop Nav */}
+        <nav className="nav-links d-none d-md-flex">
+          {navLinks.map(link => (
+            <a key={link.name} href={link.href} className="nav-link">
+              {link.name}
+            </a>
+          ))}
+          <a href="mailto:ksaikrishnamohan1501@gmail.com"
+             className="hire-btn"
+             target="_blank"
+             rel="noreferrer">
+            Hire Me
+          </a>
+        </nav>
+
+        {/* Mobile Toggle */}
+        <button
+          className="menu-btn d-md-none"
+          onClick={() => setIsMenuOpen(v => !v)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Nav */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            className="mobile-nav d-md-none"
+            variants={mobileNavVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            {navLinks.map(link => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-dark text-decoration-none"
+                className="nav-link"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
               </a>
             ))}
-            <a href="mailto:saikrishnamohan.k@gmail.com" className="btn btn-primary" target='_blank' rel='noreferrer'>
+            <a
+              href="mailto:ksaikrishnamohan1501@gmail.com"
+              className="hire-btn"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Hire Me
             </a>
-          </nav>
-
-          <button
-            className="d-md-none btn btn-link text-dark"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {isMenuOpen && (
-          <nav
-            className="d-md-none py-3 bg-white position-absolute w-100 shadow"
-            style={{ top: '100%', left: 0, right: 0 }}
-          >
-            <div className="d-flex flex-column gap-3 px-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-dark text-decoration-none"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a
-                href="mailto:saikrishnamohan.k@gmail.com"
-                target='_blank'
-                rel='noreferrer'
-                className="btn btn-primary text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Hire Me
-              </a>
-            </div>
-          </nav>
+          </motion.nav>
         )}
-      </div>
-    </header>
+      </AnimatePresence>
+    </motion.header>
   );
 };
 

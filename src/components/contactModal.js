@@ -16,14 +16,14 @@ const ContactModal = ({ show, handleClose }) => {
             Call Me
           </a>
           <a
-            href="mailto:saikrishnamohan.k@gmail.com?subject=Hiring%20Inquiry&body=Hi%20there,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you."
+            href="mailto:ksaikrishnamohan1501@gmail.com?subject=Hiring%20Inquiry&body=Hi%20there,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you."
             className="btn btn-outline-danger d-flex align-items-center gap-2"
           >
             <Mail size={20} />
             Send Email
           </a>
           <a
-            href="https://www.linkedin.com/in/sai-krishna-mohan-kolla-691982157/"
+            href="https://www.linkedin.com/in/skm-mern/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-outline-dark d-flex align-items-center gap-2"

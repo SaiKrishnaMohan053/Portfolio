@@ -1,32 +1,42 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import './footer.css';
 
-const Footer = () => {
-  return (
-    <footer className="bg-dark text-white py-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-3">
-            <h5 className="fw-bold text-white mb-3">Quick Links</h5>
-            <ul className="list-unstyled">
-              <li><a href="#home" className="nali text-decoration-none text-secondary m-2">Home</a></li>
-              <li><a href="#about" className="nali text-decoration-none text-secondary m-2">About</a></li>
-              <li><a href="#work" className="nali text-decoration-none text-secondary m-2">Work</a></li>
-              <li><a href="#contact" className="nali text-decoration-none text-secondary m-2">Contact</a></li>
-            </ul>
-          </div>
-
-          <div className="col-md-3">
-            <h5 className="fw-bold text-white mb-3">Contact Info</h5>
-            <ul className="list-unstyled">
-              <li className="mb-2 text-secondary">📧 saikrishnamohan.k@gmail.com</li>
-              <li className="mb-2 text-secondary">📞 +1 (251) 721-7855</li>
-              <li className="text-secondary">📍 Mobile, AL</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } }
 };
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+const Footer = () => (
+  <motion.footer
+    className="app-footer"
+    variants={container}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    <div className="container">
+      <div className="row">
+        <motion.div className="col-md-3 footer-section footer-links" variants={item}>
+          <h5 className="footer-title">Quick Links</h5>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </motion.div>
+        <motion.div className="col-md-5 footer-section footer-contact" variants={item}>
+          <h5 className="footer-title">Contact Info</h5>
+          <p>📧 ksaikrishnamohan1501@gmail.com</p>
+          <p>📞 +1 (251) 721-7855</p>
+          <p>📍 United States</p>
+        </motion.div>
+      </div>
+    </div>
+  </motion.footer>
+);
 
 export default Footer;

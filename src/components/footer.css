@@ -1,0 +1,27 @@
+.app-footer {
+  background: #1a1a1a;
+  color: #f0f0f0;
+  padding: 3rem 0;
+}
+.footer-section {
+  margin-bottom: 1.5rem;
+}
+.footer-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.footer-links a {
+  display: block;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.footer-contact p {
+  margin-bottom: 0.5rem;
+  color: #ccc;
+}

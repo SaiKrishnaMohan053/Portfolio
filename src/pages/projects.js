@@ -18,7 +18,7 @@ const projects = [
       "MongoDB",
       "Material UI",
     ],
-    liveLink: "https://e-commerce-frontend-blue-mu.vercel.app/",
+    liveLink: "https://e-comwholesale.vercel.app/",
     githubLink: {
       frontend: "https://github.com/SaiKrishnaMohan053/E-Commerce_frontend",
       backend: "https://github.com/SaiKrishnaMohan053/E-Commerce_backend",

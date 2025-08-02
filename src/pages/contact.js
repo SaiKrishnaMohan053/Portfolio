@@ -17,8 +17,8 @@ const Contact = () => {
     {
       icon: <Mail className="text-primary" size={24} />,
       title: "Email",
-      content: "saikrishnamohan.k@gmail.com",
-      link: "mailto:saikrishnamohan.k@gmail.com",
+      content: "ksaikrishnamohan1501@gmail.com",
+      link: "mailto:ksaikrishnamohan1501@gmail.com",
     },
     {
       icon: <Phone className="text-primary" size={24} />,
@@ -29,8 +29,8 @@ const Contact = () => {
     {
       icon: <MapPin className="text-primary" size={24} />,
       title: "Location",
-      content: "Mobile, AL",
-      link: "https://maps.google.com/?q=Mobile,+AL",
+      content: "United States",
+      link: "https://maps.app.goo.gl/1aeAWVtfCGzGX5XL9",
     },
   ];
 

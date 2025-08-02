@@ -1,21 +1,41 @@
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
+/* Accent color utility */
+.text-accent {
+  color: #0096c7; /* same teal accent */
 }
-  
-.card.position-relative:hover .card-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}  
+
+/* Section underline */
+.section-underline {
+  width: 80px;
+  height: 4px;
+  background-color: #0096c7;
+}
+
+/* Intro paragraph max-width */
+.about-text {
+  max-width: 800px;
+}
+
+/* Icon wrapper */
+.icon-wrapper {
+  background: rgba(0, 150, 199, 0.1);
+  display: inline-flex;
+  margin: 0 auto 1rem;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+/* Card styling adjustments */
+.card {
+  border: none;
+  background: #fff;
+  border-radius: 8px;
+  /* Even gray shadow on all sides */
+  box-shadow: 0 0 20px 4px rgba(128, 128, 128, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  /* Deeper, wider on hover */
+  box-shadow: 0 0 30px 6px rgba(128, 128, 128, 0.35);
+}

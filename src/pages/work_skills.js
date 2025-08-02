@@ -1,217 +1,212 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Server, Database, Terminal } from "lucide-react";
+import { motion } from "framer-motion";
+import "./workSkills.css";
+import usaa from "../logos/USAA.png";
+import sofi from "../logos/sofi.png";
+import lowes from "../logos/lowes.png";
+import hartford from "../logos/hartford.svg";
+import gap from "../logos/gap.png";
 
+// Animation variants
+const sectionVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
+const titleVariant   = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
+const itemVariant    = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
+
+// Work Experiences from resume with company icons
 const workExperiences = [
-  {
-    id: 1,
-    title: "Frontend Developer",
-    company: "Ramphal Technologies Private Ltd",
-    duration: "Jan 2020 - June 2023",
-    description:
-      "Developing scalable web applications and APIs with a focus on air traffic management solutions using modern technologies and agile methodologies.",
-  },
-  {
-    id: 2,
-    title: "Frontend Developer Intern",
-    company: "Ramphal Technologies Private Ltd",
-    duration: "October 2020 - Dec 2020",
-    description:
-      "I created web interfaces that worked across a range of devices, making them easy and fast to use. I also investigated new technologies and helped to find resources for projects.",
-  },
+  { id: 1, title: "Senior Full Stack Engineer", company: "USAA, Colorado Springs, CO", duration: "Feb 2024 – Present", description: "Modernizing claims processing with React.js, Tailwind CSS, Node.js & Express; integrating AWS S3/SES and legacy Spring Boot microservices.", iconSrc: usaa },
+  { id: 2, title: "Senior Software Engineer", company: "SoFi, San Francisco, CA", duration: "Aug 2021 – Jan 2024", description: "Led development of SoFi's robo-advisor platform with dynamic UIs in React and Chart.js, and backend services in Node.js.", iconSrc: sofi },
+  { id: 3, title: "Full Stack Developer", company: "Lowe’s, Charlotte, NC", duration: "Jan 2019 – Jul 2021", description: "Delivered B2B e-commerce features using React, Material UI, Node.js; implemented real-time inventory filters and admin dashboards.", iconSrc: lowes },
+  { id: 4, title: "Full Stack Developer", company: "The Hartford, Chicago, IL", duration: "Jun 2016 – Dec 2018", description: "Built claims management platform with React/Redux, designed RESTful APIs in Express, and integrated AWS S3 for document handling.", iconSrc: hartford },
+  { id: 5, title: "Junior Full Stack Developer", company: "GAP Inc, New York, NY", duration: "Aug 2012 – Nov 2014", description: "Developed budgeting and reporting tools with EJS, Bootstrap, and Node.js; optimized data entry flows and dashboards.", iconSrc: gap }
 ];
-
-const skillLinks = {
-  React: "https://reactjs.org",
-  JavaScript: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-  "Bootstrap": "https://getbootstrap.com/",
-  "HTML/CSS": "https://developer.mozilla.org/en-US/docs/Web/HTML",
-  "Node.js": "https://nodejs.org",
-  Express: "https://expressjs.com",
-  Python: "https://www.python.org",
-  Django: "https://www.djangoproject.com",
-  MongoDB: "https://www.mongodb.com",
-  Git: "https://git-scm.com",
-  AWS: "https://aws.amazon.com",
-  "CI/CD": "https://circleci.com",
-};
-
-const additionalTechLinks = {
-  Redux: "https://redux.js.org",
-  Jest: "https://jestjs.io",
-  "RESTful API": "https://restfulapi.net",
-  Vercel: "https://vercel.com",
-  Render: "https://render.com/",
-  "Material UI": "https://mui.com",
-  "Responsive Design": "https://www.smashingmagazine.com/2011/01/guidelines-for-responsive-web-design/",
-  Agile: "https://www.agilealliance.org",
-};
 
 const skillCategories = [
   {
-    title: "Frontend Development",
-    icon: <Layout className="text-primary" size={24} />,
+    title: "Languages & Programming",
     skills: [
-      { name: "React", level: 90 },
-      { name: "JavaScript", level: 85 },
-      { name: "Bootstrap", level: 95 },
-      { name: "HTML/CSS", level: 95 },
-    ],
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "Python (Scripting)",
+      "SQL"
+    ]
   },
   {
-    title: "Backend Development",
-    icon: <Server className="text-primary" size={24} />,
+    title: "Frontend",
     skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Express", level: 90 },
-    ],
+      "React.js",
+      "Next.js",
+      "Redux Toolkit",
+      "React Router",
+      "Material UI",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Formik & Yup",
+      "React Hook Form",
+      "Chart.js",
+      "EJS (legacy)",
+      "jQuery (legacy)"
+    ]
   },
   {
-    title: "Database",
-    icon: <Database className="text-primary" size={24} />,
+    title: "Backend & APIs",
     skills: [
-      { name: "MongoDB", level: 85 },
-    ],
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "GraphQL",
+      "JWT & OAuth 2.0",
+      "RBAC (Role-Based Access Control)",
+      "API Rate Limiting & Middleware",
+      "File Uploads (Multer)",
+      "Email (Nodemailer, AWS SES)"
+    ]
   },
   {
-    title: "DevOps & Tools",
-    icon: <Terminal className="text-primary" size={24} />,
+    title: "Databases",
     skills: [
-      { name: "Git", level: 90 },
-      { name: "AWS", level: 75 },
-      { name: "CI/CD", level: 85 },
-    ],
+      "MongoDB & Mongoose",
+      "PostgreSQL",
+      "MySQL",
+      "Firebase",
+      "Redis"
+    ]
   },
+  {
+    title: "DevOps & Cloud",
+    skills: [
+      "AWS (EC2, S3, SES, IAM, Lambda, RDS, CloudFront, CloudWatch)",
+      "Docker & PM2",
+      "Vercel",
+      "Render",
+      "DigitalOcean",
+      "GitHub Actions & Workflows",
+      "Nginx",
+      "Terraform (basic)"
+    ]
+  },
+  {
+    title: "Testing",
+    skills: [
+      "Jest",
+      "Supertest",
+      "Cypress",
+      "Mocha & Chai",
+      "Postman",
+      "Swagger",
+      "Insomnia"
+    ]
+  },
+  {
+    title: "CI/CD & Monitoring",
+    skills: [
+      "GitHub Actions",
+      "GitHub Webhooks",
+      "Sentry",
+      "AWS CloudWatch",
+      "JMeter"
+    ]
+  },
+  {
+    title: "Collaboration & Project Management",
+    skills: [
+      "JIRA",
+      "Confluence",
+      "Notion",
+      "Lucidchart",
+      "Figma",
+      "Draw.io",
+      "Agile (Scrum)"
+    ]
+  }
 ];
 
 const WorkSkills = () => {
   const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimate(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  useEffect(() => { setAnimate(true); }, []);
 
   return (
-    <section id="work-skills" className="py-5 bg-white">
+    <motion.section
+      id="work"
+      className="py-5 bg-light"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <div className="container">
-        <div className="mb-5">
-          <h2 className="display-6 fw-bold text-dark mb-3 text-center">
-            Work Experience
-          </h2>
-          <div className="row">
-            {workExperiences.map((exp) => (
-              <div key={exp.id} className="col-md-6 mb-4">
-                <div className="card h-100 shadow-sm">
-                  <div className="card-body">
-                    <h5 className="card-title fw-bold text-dark">{exp.title}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">
-                      {exp.company} &bull; {exp.duration}
-                    </h6>
-                    <p className="card-text text-muted">{exp.description}</p>
-                  </div>
-                </div>
+        <motion.div variants={titleVariant} className="mb-5 text-center">
+          <h2 className="display-6 fw-bold text-dark">Work Experience</h2>
+        </motion.div>
+
+        <div className="timeline">
+          {workExperiences.map((exp, idx) => (
+            <motion.div
+              key={exp.id}
+              className={`timeline-item ${idx % 2 === 0 ? "right" : "left"}`}
+              variants={itemVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: idx * 0.3 }}
+            >
+              <div className="icon-circle">
+                <img src={exp.iconSrc} alt={`${exp.company} logo`} className="company-icon" />
               </div>
-            ))}
-          </div>
+
+              <div className="timeline-content p-4">
+                <h5 className="fw-semibold text-dark mb-1">{exp.title}</h5>
+                <h6 className="text-secondary small mb-2">
+                  {exp.company} &bull; {exp.duration}
+                </h6>
+                <p className="text-muted small mb-0">{exp.description}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        <div className="mb-5">
-          <h2 className="display-6 fw-bold text-dark mb-3 text-center">
-            Skills
-          </h2>
-          <div className="row g-4">
-            {skillCategories.map((category, index) => (
-              <div key={index} className="col-md-6">
-                <div className="bg-white p-4 rounded shadow">
-                  <div className="d-flex align-items-center gap-2 mb-3">
-                    <div className="bg-light p-2 rounded">{category.icon}</div>
-                    <h5 className="fw-bold text-dark mb-0">{category.title}</h5>
-                  </div>
-                  <div>
-                    {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="mb-3">
-                        <div className="d-flex justify-content-between mb-1">
-                          <span className="text-dark">
-                            {skillLinks[skill.name] ? (
-                              <a
-                                href={skillLinks[skill.name]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{
-                                  color: "inherit",
-                                  textDecoration: "none",
-                                }}
-                              >
-                                {skill.name}
-                              </a>
-                            ) : (
-                              skill.name
-                            )}
-                          </span>
-                          <span className="small text-muted">
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <div className="progress" style={{ height: "4px" }}>
-                          <div
-                            className="progress-bar bg-primary"
-                            role="progressbar"
-                            style={{
-                              width: animate ? `${skill.level}%` : "0%",
-                              transition: "width 1.5s ease-in-out",
-                            }}
-                            aria-valuenow={skill.level}
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </div>
+        <motion.section
+          id="skills"
+          className="skills-section py-12 bg-light"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <div className="container">
+            <motion.div variants={titleVariant} className="mb-6 text-center">
+              <h2 className="display-6 fw-bold text-dark">Skills</h2>
+            </motion.div>
+
+            <div className="skills-grid">
+              {skillCategories.map((cat, i) => (
+                <motion.div
+                  key={cat.title}
+                  className="skill-card"
+                  whileHover={{ scale: 1.03 }}
+                  variants={itemVariant}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <h3 className="skill-title mb-3">{cat.title}</h3>
+                  <div className="skill-list">
+                    {cat.skills.map(skill => (
+                      <span
+                        key={skill}
+                        className="skill-pill"
+                      >
+                        {skill}
+                      </span>
                     ))}
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 bg-white p-4 rounded shadow">
-            <h3 className="text-center fw-bold text-dark mb-3">
-              Additional Technologies
-            </h3>
-            <div className="d-flex flex-wrap justify-content-center gap-2">
-              {[
-                "Redux",
-                "Jest",
-                "RESTful API",
-                "Vercel",
-                "Render",
-                "Material UI",
-                "Responsive Design",
-                "Agile",
-              ].map((tech, index) => (
-                <span
-                  key={index}
-                  className="badge rounded-pill bg-light text-primary m-1 p-2"
-                >
-                  {additionalTechLinks[tech] ? (
-                    <a
-                      href={additionalTechLinks[tech]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: "inherit", textDecoration: "none" }}
-                    >
-                      {tech}
-                    </a>
-                  ) : (
-                    tech
-                  )}
-                </span>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </motion.section>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

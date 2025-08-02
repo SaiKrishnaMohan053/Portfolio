@@ -1,27 +1,69 @@
 import React, { useState } from "react";
 import { Code } from "lucide-react";
 import { Button } from "react-bootstrap";
+import { motion } from "framer-motion";
 import ContactModal from "../components/contactModal";
+
+// Animation variants
+const heroContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } }
+};
+const badgeVariant = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+const headingVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+const paragraphVariant = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.8 } }
+};
+const buttonsVariant = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+};
+const imageVariant = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.7 } }
+};
 
 const Hero = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <section id="home" className="py-5 bg-light">
+    <motion.section
+      id="home"
+      className="py-5 bg-light"
+      variants={heroContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <div className="container">
         <div className="row align-items-center g-4">
+          {/* Left Column */}
           <div className="col-md-6 text-center text-md-start">
-            <div className="d-inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary rounded-pill fw-semibold mb-3">
-              Full Stack Developer
-            </div>
-            <h1 className="display-5 fw-bold text-dark">
-              Building <span className="text-primary">digital experiences</span> that matter
-            </h1>
-            <p className="lead text-muted">
-              I create responsive web applications and websites that provide excellent user experiences and address business issues.
-            </p>
-            
-            <div className="d-flex flex-wrap gap-3 mt-4">
+            <motion.div variants={badgeVariant}
+              className="d-inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary rounded-pill fw-semibold mb-3"
+            >
+              Senior Full Stack Developer
+            </motion.div>
+
+            <motion.h1 variants={headingVariant} className="display-5 fw-bold text-dark">
+              Building <span className="text-primary">scalable, secure</span> and
+              <span className="text-primary"> high-performance</span> applications
+            </motion.h1>
+
+            <motion.p variants={paragraphVariant} className="lead text-muted">
+              I bring 10+ years of expertise across insurance, fintech,
+              e-commerce, and retail, specializing in MERN stack, TypeScript,
+              and cloud-based architectures to deliver systems used by millions.
+            </motion.p>
+
+            <motion.div variants={buttonsVariant} className="d-flex flex-wrap gap-3 mt-4">
               <Button variant="primary" onClick={() => setShowModal(true)}>
                 Get in Touch
               </Button>
@@ -30,16 +72,17 @@ const Hero = () => {
               </Button>
               <Button
                 variant="outline-primary"
-                href="/assets/Sai_Krishna_Mohan_Kolla_Resume.pdf"
-                download="Sai_Krishna_Mohan_Kolla_Resume.pdf"
+                href=""
+                download=""
               >
                 Download CV
               </Button>
-            </div>
+            </motion.div>
           </div>
 
+          {/* Right Column: Portrait */}
           <div className="col-md-6 text-center">
-            <div className="position-relative d-inline-block">
+            <motion.div variants={imageVariant} className="position-relative d-inline-block">
               <div
                 className="rounded-circle overflow-hidden bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
                 style={{ width: "250px", height: "250px" }}
@@ -51,8 +94,8 @@ const Hero = () => {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",    
-                    objectPosition: "top", 
+                    objectFit: "cover",
+                    objectPosition: "top",
                   }}
                 />
               </div>
@@ -61,13 +104,14 @@ const Hero = () => {
                   <Code size={24} className="text-primary" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
+      {/* Contact Modal */}
       <ContactModal show={showModal} handleClose={() => setShowModal(false)} />
-    </section>
+    </motion.section>
   );
 };
 
