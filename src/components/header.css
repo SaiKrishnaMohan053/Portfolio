@@ -29,7 +29,7 @@
   text-decoration: none;
 }
 .logo svg {
-  color: #0096c7;
+  color: #0d6efd;
 }
 
 .nav-links {
@@ -48,7 +48,7 @@
 }
 
 .hire-btn {
-  background-color: #0096c7;
+  background-color: #0d6efd;
   color: #fff;
   border: none;
   padding: 0.5rem 1.2rem;
@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 .hire-btn:hover {
-  background-color: #007a9e;
+  background-color: #0d6efd;
   text-decoration: none;
 }
 

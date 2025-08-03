@@ -114,7 +114,7 @@ export default function Contact() {
                 className="bg-white p-4 rounded shadow-sm text-center d-block text-decoration-none"
               >
                 <div className="d-flex justify-content-center mb-3">
-                  <div className="p-3 rounded-circle" style={{ backgroundColor: '#e0e7ff' }}>
+                  <div className="p-3 rounded-circle" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)' }}>
                     {info.icon}
                   </div>
                 </div>
