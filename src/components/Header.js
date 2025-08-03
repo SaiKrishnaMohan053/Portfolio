@@ -9,8 +9,18 @@ const headerVariants = {
 };
 
 const mobileNavVariants = {
-  open:   { height: 'auto', opacity: 1, transition: { duration: 0.3 } },
-  closed: { height: 0,       opacity: 0, transition: { duration: 0.3 } }
+  closed: {
+    display: 'none',
+    height: 0,
+    opacity: 0,
+    transition: { duration: 0.2 }
+  },
+  open: {
+    display: 'flex',
+    height: 'auto',
+    opacity: 1,
+    transition: { duration: 0.2 }
+  }
 };
 
 const navLinks = [
