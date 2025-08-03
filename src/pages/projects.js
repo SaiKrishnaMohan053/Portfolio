@@ -1,6 +1,24 @@
-// Projects.js
 import React from "react";
 import { Github } from "lucide-react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+      duration: 0.6,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const projects = [
   {
@@ -26,14 +44,31 @@ const projects = [
   },
 ];
 
-const Projects = () => {
+export default function Projects() {
   return (
-    <section id="projects" className="py-5 bg-white">
+    <motion.section
+      id="projects"
+      className="py-5 bg-white"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <div className="container">
-        <h2 className="display-6 fw-bold text-dark mb-3 text-center">Projects</h2>
-        <div className="row">
+        <motion.h2
+          className="display-6 fw-bold text-dark mb-3 text-center"
+          variants={itemVariants}
+        >
+          Projects
+        </motion.h2>
+
+        <motion.div className="row" variants={containerVariants}>
           {projects.map((project) => (
-            <div key={project.id} className="col-md-6 col-lg-4 mb-4">
+            <motion.div
+              key={project.id}
+              className="col-md-6 col-lg-4 mb-4"
+              variants={itemVariants}
+            >
               <div className="card h-100 shadow-sm">
                 <img
                   src={project.image}
@@ -42,25 +77,30 @@ const Projects = () => {
                   style={{ height: "200px", objectFit: "cover" }}
                 />
                 <div className="card-body">
-                  <h5 className="card-title fw-bold text-dark">{project.title}</h5>
-                  <p className="card-text text-muted">{project.description}</p>
+                  <h5 className="card-title fw-bold text-dark">
+                    {project.title}
+                  </h5>
+                  <p className="card-text text-muted">
+                    {project.description}
+                  </p>
                   <div className="d-flex flex-wrap gap-2 mb-3">
-                    {project.technologies.map((tech, index) => (
+                    {project.technologies.map((tech, idx) => (
                       <span
-                        key={index}
+                        key={idx}
                         className="badge rounded-pill bg-light text-primary me-1 mb-1"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <a 
+                  <a
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-primary"
-                    style={{ marginBottom: "15px" }}
-                  >Live Link</a>
+                    className="btn btn-primary mb-3"
+                  >
+                    Live Link
+                  </a>
                   <div className="d-flex gap-3">
                     <a
                       href={project.githubLink.frontend}
@@ -83,12 +123,10 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
-};
-
-export default Projects;
+}

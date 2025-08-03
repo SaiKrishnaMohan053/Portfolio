@@ -7,12 +7,10 @@ import lowes from "../logos/lowes.png";
 import hartford from "../logos/hartford.svg";
 import gap from "../logos/gap.png";
 
-// Animation variants
 const sectionVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
 const titleVariant   = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 const itemVariant    = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
-// Work Experiences from resume with company icons
 const workExperiences = [
   { id: 1, title: "Senior Full Stack Engineer", company: "USAA, Colorado Springs, CO", duration: "Feb 2024 – Present", description: "Modernizing claims processing with React.js, Tailwind CSS, Node.js & Express; integrating AWS S3/SES and legacy Spring Boot microservices.", iconSrc: usaa },
   { id: 2, title: "Senior Software Engineer", company: "SoFi, San Francisco, CA", duration: "Aug 2021 – Jan 2024", description: "Led development of SoFi's robo-advisor platform with dynamic UIs in React and Chart.js, and backend services in Node.js.", iconSrc: sofi },

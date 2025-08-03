@@ -4,7 +4,6 @@ import { Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import ContactModal from "../components/contactModal";
 
-// Animation variants
 const heroContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.2 } }
@@ -44,7 +43,6 @@ const Hero = () => {
     >
       <div className="container">
         <div className="row align-items-center g-4">
-          {/* Left Column */}
           <div className="col-md-6 text-center text-md-start">
             <motion.div variants={badgeVariant}
               className="d-inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary rounded-pill fw-semibold mb-3"
@@ -80,7 +78,6 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right Column: Portrait */}
           <div className="col-md-6 text-center">
             <motion.div variants={imageVariant} className="position-relative d-inline-block">
               <div
@@ -109,7 +106,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Contact Modal */}
       <ContactModal show={showModal} handleClose={() => setShowModal(false)} />
     </motion.section>
   );

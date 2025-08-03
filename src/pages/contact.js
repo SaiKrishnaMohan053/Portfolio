@@ -1,8 +1,27 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
-const Contact = () => {
+const containerVariants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { 
+      when: "beforeChildren",
+      staggerChildren: 0.15,
+      duration: 0.6
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +55,7 @@ const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -47,40 +66,51 @@ const Contact = () => {
       'service_portfolio',
       'template_portfolio',
       formData,
-      'P_FAXTnZxnuTO18V2'
+      'Sn_hlMaR-W7qYRU8y'
     )
-    .then((result) => {
+    .then(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
       setSubmitMessage('Your message has been sent successfully! I will get back to you soon.');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }, (error) => {
+    })
+    .catch(() => {
       setIsSubmitting(false);
       setSubmitStatus('error');
       setSubmitMessage('There was an error sending your message. Please try again.');
-      console.error(error);
     });
   };
 
   return (
-    <section id="contact" className="py-5 bg-light">
-      <div className="container">
-        <div className="text-center mb-5">
+    <motion.section
+      id="contact"
+      className="py-5 bg-light"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <motion.div className="container">
+
+        <motion.div className="text-center mb-5" variants={itemVariants}>
           <h2 className="display-6 fw-bold text-dark mb-4">Get In Touch</h2>
-          <div className="mx-auto mb-3" style={{ width: '80px', height: '4px', backgroundColor: '#0d6efd' }}></div>
+          <div 
+            className="mx-auto mb-3" 
+            style={{ width: '80px', height: '4px', backgroundColor: '#0d6efd' }}
+          />
           <p className="text-muted mx-auto" style={{ maxWidth: '700px' }}>
             Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.
             Feel free to reach out using the form below or through my contact information.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="row mb-4">
-          {contactInfo.map((info, index) => (
-            <div key={index} className="col-md-4 mb-4">
+        <motion.div className="row mb-4" variants={itemVariants}>
+          {contactInfo.map((info, idx) => (
+            <motion.div key={idx} className="col-md-4 mb-4" variants={itemVariants}>
               <a 
-                href={info.link} 
-                target={info.title === "Location" ? "_blank" : ""}
-                rel={info.title === "Location" ? "noopener noreferrer" : ""}
+                href={info.link}
+                target={info.title === "Location" ? "_blank" : undefined}
+                rel={info.title === "Location" ? "noopener noreferrer" : undefined}
                 className="bg-white p-4 rounded shadow-sm text-center d-block text-decoration-none"
               >
                 <div className="d-flex justify-content-center mb-3">
@@ -91,23 +121,28 @@ const Contact = () => {
                 <h5 className="fw-bold text-dark mb-2">{info.title}</h5>
                 <p className="text-muted mb-0">{info.content}</p>
               </a>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="card shadow-sm overflow-hidden">
+        <motion.div className="card shadow-sm overflow-hidden" variants={itemVariants}>
           <div className="row justify-content-center g-0">
             <div className="col-md-8 p-4 p-md-5">
               <h3 className="h4 fw-bold text-dark mb-4 text-center">Send Me a Message</h3>
 
               {submitMessage && (
-                <div className={`mb-4 alert ${submitStatus === 'success' ? 'alert-success' : 'alert-danger'}`} role="alert">
+                <div 
+                  className={`mb-4 alert ${
+                    submitStatus === 'success' ? 'alert-success' : 'alert-danger'
+                  }`}
+                  role="alert"
+                >
                   {submitMessage}
                 </div>
               )}
 
               <form onSubmit={handleSubmit}>
-                <div className="row mb-3">
+                <motion.div className="row mb-3" variants={itemVariants}>
                   <div className="col-md-6">
                     <label htmlFor="name" className="form-label">Your Name</label>
                     <input
@@ -134,8 +169,9 @@ const Contact = () => {
                       placeholder="john@example.com"
                     />
                   </div>
-                </div>
-                <div className="mb-3">
+                </motion.div>
+
+                <motion.div className="mb-3" variants={itemVariants}>
                   <label htmlFor="subject" className="form-label">Subject</label>
                   <input
                     type="text"
@@ -147,8 +183,9 @@ const Contact = () => {
                     className="form-control"
                     placeholder="Project Inquiry"
                   />
-                </div>
-                <div className="mb-3">
+                </motion.div>
+
+                <motion.div className="mb-3" variants={itemVariants}>
                   <label htmlFor="message" className="form-label">Your Message</label>
                   <textarea
                     id="message"
@@ -159,32 +196,38 @@ const Contact = () => {
                     rows="5"
                     className="form-control"
                     placeholder="I'd like to discuss a project..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={20} />
-                      Send Message
-                    </>
-                  )}
-                </button>
+                  />
+                </motion.div>
+
+                <motion.div variants={itemVariants}>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span 
+                          className="spinner-border spinner-border-sm" 
+                          role="status" 
+                          aria-hidden="true"
+                        />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={20} />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </motion.div>
               </form>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+        </motion.div>
 
-export default Contact;
+      </motion.div>
+    </motion.section>
+  );
+}

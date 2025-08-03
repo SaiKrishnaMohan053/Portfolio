@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Code } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import './header.css';
 
 const headerVariants = {
@@ -9,26 +9,33 @@ const headerVariants = {
 };
 
 const mobileNavVariants = {
-  hidden: { height: 0, opacity: 0 },
-  visible: { height: 'auto', opacity: 1, transition: { duration: 0.3 } }
+  open:   { height: 'auto', opacity: 1, transition: { duration: 0.3 } },
+  closed: { height: 0,       opacity: 0, transition: { duration: 0.3 } }
 };
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Work', href: '#work' },
+  { name: 'Home',    href: '#home' },
+  { name: 'About',   href: '#about' },
+  { name: 'Work',    href: '#work' },
   { name: 'Contact', href: '#contact' },
 ];
 
-const Header = () => {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled]   = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const lastTarget = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
+    lastTarget.current = href.slice(1);
+    setIsMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -38,69 +45,70 @@ const Header = () => {
       animate="visible"
     >
       <div className="container d-flex align-items-center justify-content-between">
-        {/* Logo */}
         <a href="#home" className="logo">
-          <Code size={28} />
-          <span>SaiKrishnaMohan_Kolla</span>
+          <Code size={28} /><span>SaiKrishnaMohan_Kolla</span>
         </a>
 
-        {/* Desktop Nav */}
         <nav className="nav-links d-none d-md-flex">
           {navLinks.map(link => (
-            <a key={link.name} href={link.href} className="nav-link">
+            <a
+              key={link.name}
+              href={link.href}
+              className="nav-link"
+            >
               {link.name}
             </a>
           ))}
-          <a href="mailto:ksaikrishnamohan1501@gmail.com"
-             className="hire-btn"
-             target="_blank"
-             rel="noreferrer">
+          <a
+            href="mailto:ksaikrishnamohan1501@gmail.com"
+            className="hire-btn"
+            target="_blank"
+            rel="noreferrer"
+          >
             Hire Me
           </a>
         </nav>
 
-        {/* Mobile Toggle */}
         <button
           className="menu-btn d-md-none"
-          onClick={() => setIsMenuOpen(v => !v)}
+          onClick={() => setIsMenuOpen(o => !o)}
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={24}/> : <Menu size={24}/>}
         </button>
       </div>
-
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.nav
-            className="mobile-nav d-md-none"
-            variants={mobileNavVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
+      
+      <motion.nav
+        className="mobile-nav d-md-none"
+        variants={mobileNavVariants}
+        initial="closed"
+        animate={isMenuOpen ? 'open' : 'closed'}
+        onAnimationComplete={state => {
+          if (state === 'closed' && lastTarget.current) {
+            const el = document.getElementById(lastTarget.current);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            lastTarget.current = null;
+          }
+        }}
+      >
+        {navLinks.map(link => (
+          <a
+            key={link.name}
+            href={link.href}
+            className="nav-link"
+            onClick={e => handleLinkClick(e, link.href)}
           >
-            {navLinks.map(link => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="nav-link"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-            <a
-              href="mailto:ksaikrishnamohan1501@gmail.com"
-              className="hire-btn"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Hire Me
-            </a>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+            {link.name}
+          </a>
+        ))}
+        <a
+          href="mailto:ksaikrishnamohan1501@gmail.com"
+          className="hire-btn"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Hire Me
+        </a>
+      </motion.nav>
     </motion.header>
   );
-};
-
-export default Header;
+}

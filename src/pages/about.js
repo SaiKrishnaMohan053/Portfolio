@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Layers, Server, Code, Cloud } from "lucide-react";
 import "./about.css";
 
-// Animation variants
 const aboutContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.2 } }
@@ -28,13 +27,11 @@ const About = () => {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="container">
-        {/* Section Heading */}
         <motion.div variants={sectionTitleVariant} className="text-center mb-5">
           <h2 className="display-5 fw-bold text-dark mb-3">About Me</h2>
           <div className="section-underline mx-auto mb-3"></div>
         </motion.div>
 
-        {/* Introduction */}
         <motion.div variants={sectionTitleVariant} className="text-center mb-5 px-md-5">
           <h3 className="fw-bold text-dark mb-3">Introduction</h3>
           <p className="text-muted mx-auto about-text">
@@ -46,7 +43,6 @@ const About = () => {
           </p>
         </motion.div>
 
-        {/* Skill Cards */}
         <div className="row g-4">
           <motion.div variants={cardVariant} className="col-md-3">
             <div className="card text-center shadow-sm p-4 h-100">
