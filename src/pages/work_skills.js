@@ -12,11 +12,11 @@ const titleVariant   = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y
 const itemVariant    = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
 const workExperiences = [
-  { id: 1, title: "Senior Full Stack Engineer", company: "USAA, Colorado Springs, CO", duration: "Feb 2024 – Present", description: "Modernizing claims processing with React.js, Tailwind CSS, Node.js & Express; integrating AWS S3/SES and legacy Spring Boot microservices.", iconSrc: usaa },
-  { id: 2, title: "Senior Software Engineer", company: "SoFi, San Francisco, CA", duration: "Aug 2021 – Jan 2024", description: "Led development of SoFi's robo-advisor platform with dynamic UIs in React and Chart.js, and backend services in Node.js.", iconSrc: sofi },
-  { id: 3, title: "Full Stack Developer", company: "Lowe’s, Charlotte, NC", duration: "Jan 2019 – Jul 2021", description: "Delivered B2B e-commerce features using React, Material UI, Node.js; implemented real-time inventory filters and admin dashboards.", iconSrc: lowes },
-  { id: 4, title: "Full Stack Developer", company: "The Hartford, Chicago, IL", duration: "Jun 2016 – Dec 2018", description: "Built claims management platform with React/Redux, designed RESTful APIs in Express, and integrated AWS S3 for document handling.", iconSrc: hartford },
-  { id: 5, title: "Junior Full Stack Developer", company: "GAP Inc, New York, NY", duration: "Aug 2012 – Nov 2014", description: "Developed budgeting and reporting tools with EJS, Bootstrap, and Node.js; optimized data entry flows and dashboards.", iconSrc: gap }
+  { id: 1, title: "Senior Full Stack Engineer", company: "USAA, Colorado Springs, CO", duration: "Jun 2024 – Present", description: "Modernizing claims processing with React.js, Tailwind CSS, Node.js & Express; integrating AWS S3/SES and legacy Spring Boot microservices.", iconSrc: usaa },
+  { id: 2, title: "Senior Software Engineer", company: "SoFi, San Francisco, CA", duration: "Aug 2023 – May 2024", description: "Led development of SoFi's robo-advisor platform with dynamic UIs in React and Chart.js, and backend services in Node.js.", iconSrc: sofi },
+  { id: 3, title: "Full Stack Developer", company: "Lowe’s, Charlotte, NC", duration: "May 2019 – Jul 2023", description: "Delivered B2B e-commerce features using React, Material UI, Node.js; implemented real-time inventory filters and admin dashboards.", iconSrc: lowes },
+  { id: 4, title: "Full Stack Developer", company: "The Hartford, Chicago, IL", duration: "Dec 2016 – April 2019", description: "Built claims management platform with React/Redux, designed RESTful APIs in Express, and integrated AWS S3 for document handling.", iconSrc: hartford },
+  { id: 5, title: "Junior Full Stack Developer", company: "GAP Inc, New York, NY", duration: "Aug 2015 – Nov 2016", description: "Developed budgeting and reporting tools with EJS, Bootstrap, and Node.js; optimized data entry flows and dashboards.", iconSrc: gap }
 ];
 
 const skillCategories = [
