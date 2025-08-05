@@ -56,7 +56,7 @@ export default function Header() {
     >
       <div className="container d-flex align-items-center justify-content-between">
         <a href="#home" className="logo">
-          <Code size={28} /><span>SaiKrishnaMohan_Kolla</span>
+          <Code size={28} /><span>Sai_Krishna_Mohan</span>
         </a>
 
         <nav className="nav-links d-none d-md-flex">
@@ -70,7 +70,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="mailto:ksaikrishnamohan1501@gmail.com"
+            href="mailto:krishnamohank1501@gmail.com"
             className="hire-btn"
             target="_blank"
             rel="noreferrer"
@@ -112,7 +112,7 @@ export default function Header() {
           </a>
         ))}
         <a
-          href="mailto:ksaikrishnamohan1501@gmail.com"
+          href="mailto:krishnamohank1501@gmail.com"
           className="hire-btn"
           onClick={() => setIsMenuOpen(false)}
         >

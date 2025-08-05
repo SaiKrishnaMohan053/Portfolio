@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Linkedin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -36,8 +36,8 @@ export default function Contact() {
     {
       icon: <Mail className="text-primary" size={24} />,
       title: "Email",
-      content: "ksaikrishnamohan1501@gmail.com",
-      link: "mailto:ksaikrishnamohan1501@gmail.com",
+      content: "krishnamohank1501@gmail.com",
+      link: "mailto:krishnamohank1501@gmail.com",
     },
     {
       icon: <Phone className="text-primary" size={24} />,
@@ -50,6 +50,12 @@ export default function Contact() {
       title: "Location",
       content: "United States",
       link: "https://maps.app.goo.gl/1aeAWVtfCGzGX5XL9",
+    },
+    {
+      icon: <Linkedin className="text-primary" size={24} />,
+      title: "LinkedIn",
+      content: "Sai Krishna Mohan K",
+      link: "https://www.linkedin.com/in/sai-krishna-mohan-k/",
     },
   ];
 
@@ -66,7 +72,7 @@ export default function Contact() {
       'service_portfolio',
       'template_portfolio',
       formData,
-      'Sn_hlMaR-W7qYRU8y'
+      '6mrdPzyPMig9Zo1Rv'
     )
     .then(() => {
       setIsSubmitting(false);
@@ -104,9 +110,9 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <motion.div className="row mb-4" variants={itemVariants}>
+        <motion.div className="row mb-4 gx-4 gy-4 justify-content-center" variants={itemVariants}>
           {contactInfo.map((info, idx) => (
-            <motion.div key={idx} className="col-md-4 mb-4" variants={itemVariants}>
+            <motion.div key={idx} className="col-12 col-sm-6 col-md-3 mb-4" variants={itemVariants}>
               <a 
                 href={info.link}
                 target={info.title === "Location" ? "_blank" : undefined}
