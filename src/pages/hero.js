@@ -71,7 +71,7 @@ const Hero = () => {
               <Button
                 variant="outline-primary"
                 href="/assets/sr.Full_stack_developer.docx"
-                download="Sai_Krishna_Mohan_Full_Stack.docx"
+                download="sr.Full_stack_developer.docx"
               >
                 Download CV
               </Button>
