@@ -1,110 +1,132 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./workSkills.css";
-import usaa from "../logos/USAA.png";
-import sofi from "../logos/sofi.png";
-import lowes from "../logos/lowes.png";
-import hartford from "../logos/hartford.svg";
-import gap from "../logos/gap.png";
+import natera from "../logos/natera-inc-logo.jpg";
+import exact from "../logos/exact-sciences.png";
+import ozk from "../logos/ozk.jpeg";
+import hope from "../logos/hope-bancorp.png";
+import upstox from "../logos/upstox.png";
 
 const sectionVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
 const titleVariant   = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 const itemVariant    = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
 const workExperiences = [
-  { id: 1, title: "Senior Full Stack Engineer", company: "USAA, Colorado Springs, CO", duration: "Jun 2024 – Present", description: "Modernizing claims processing with React.js, Tailwind CSS, Node.js & Express; integrating AWS S3/SES and legacy Spring Boot microservices.", iconSrc: usaa },
-  { id: 2, title: "Senior Software Engineer", company: "SoFi, San Francisco, CA", duration: "Aug 2023 – May 2024", description: "Led development of SoFi's robo-advisor platform with dynamic UIs in React and Chart.js, and backend services in Node.js.", iconSrc: sofi },
-  { id: 3, title: "Full Stack Developer", company: "Lowe’s, Charlotte, NC", duration: "May 2019 – Jul 2023", description: "Delivered B2B e-commerce features using React, Material UI, Node.js; implemented real-time inventory filters and admin dashboards.", iconSrc: lowes },
-  { id: 4, title: "Full Stack Developer", company: "The Hartford, Chicago, IL", duration: "Dec 2016 – April 2019", description: "Built claims management platform with React/Redux, designed RESTful APIs in Express, and integrated AWS S3 for document handling.", iconSrc: hartford },
-  { id: 5, title: "Junior Full Stack Developer", company: "GAP Inc, New York, NY", duration: "Aug 2015 – Nov 2016", description: "Developed budgeting and reporting tools with EJS, Bootstrap, and Node.js; optimized data entry flows and dashboards.", iconSrc: gap }
+  { id: 1, title: "Senior Java Full Stack Engineer", company: "Natera", duration: "Dec 2023 – Present", description: "Modernizing healthcare platforms with Spring Boot microservices, AWS cloud migration, Kafka streaming, and React.js dashboards.", iconSrc: natera },
+  { id: 2, title: "Java Full Stack Developer", company: "Exact Sciences", duration: "April 2021 – Nov 2023", description: "Built cloud-native apps with Spring Boot, Node.js, and AWS, delivering REST/GraphQL APIs, PostgreSQL optimization, and React frontends.", iconSrc: exact },
+  { id: 3, title: "Java J2EE Developer", company: "Bank OZk", duration: "July 2018 – March 2021", description: "Migrated monolithic banking apps to Spring Boot microservices on GCP, with Angular frontends, RabbitMQ messaging, and GKE deployments.", iconSrc: ozk },
+  { id: 4, title: "Java Developer", company: "Hope Bancorp Inc", duration: "May 2017 – June 2018", description: "Developed Spring/Hibernate microservices, modernized legacy JSP systems with Angular, and automated reporting via Azure Data Factory.", iconSrc: hope },
+  { id: 5, title: "Junior Java Developer", company: "Upstox", duration: "Jun 2015 – July 2016", description: "Engineered Struts/JSP fintech apps, integrated AWS (EC2, Lambda, RDS, S3), and optimized SQL queries for faster, reliable transactions.", iconSrc: upstox }
 ];
 
 const skillCategories = [
   {
     title: "Languages & Programming",
     skills: [
+      "Java",
       "JavaScript (ES6+)",
       "TypeScript",
+      "SQL",
       "HTML5",
       "CSS3",
-      "Python (Scripting)",
-      "SQL"
+      "SASS",
+      "LESS"
     ]
   },
   {
     title: "Frontend",
     skills: [
       "React.js",
-      "Next.js",
-      "Redux Toolkit",
+      "Redux",
       "React Router",
+      "Angular",
+      "Angular CLI",
+      "RxJS",
       "Material UI",
-      "Tailwind CSS",
       "Bootstrap",
-      "Formik & Yup",
-      "React Hook Form",
-      "Chart.js",
-      "EJS (legacy)",
-      "jQuery (legacy)"
+      "Tailwind CSS",
+      "JSP",
+      "JSTL",
+      "JSF",
+      "EJS (Legacy)",
+      "jQuery (Legacy)"
     ]
   },
   {
     title: "Backend & APIs",
     skills: [
+      "Spring Boot",
+      "Spring Framework (Core, MVC, AOP, Batch, Data JPA)",
       "Node.js",
       "Express.js",
-      "REST APIs",
+      "RESTful APIs",
       "GraphQL",
-      "JWT & OAuth 2.0",
-      "RBAC (Role-Based Access Control)",
-      "API Rate Limiting & Middleware",
-      "File Uploads (Multer)",
-      "Email (Nodemailer, AWS SES)"
+      "SOAP (WSDL)",
+      "JWT",
+      "OAuth 2.0",
+      "Spring Security",
+      "Role-Based Access Control (RBAC)",
+      "Kafka",
+      "RabbitMQ",
+      "JMS"
     ]
   },
   {
     title: "Databases",
     skills: [
-      "MongoDB & Mongoose",
       "PostgreSQL",
       "MySQL",
-      "Firebase",
+      "MongoDB & Mongoose",
+      "Amazon Aurora",
+      "DynamoDB",
+      "Google Cloud SQL",
       "Redis"
     ]
   },
   {
     title: "DevOps & Cloud",
     skills: [
-      "AWS (EC2, S3, SES, IAM, Lambda, RDS, CloudFront, CloudWatch)",
-      "Docker & PM2",
-      "Vercel",
-      "Render",
-      "DigitalOcean",
-      "GitHub Actions & Workflows",
+      "AWS (EC2, S3, SES, IAM, Lambda, RDS, CloudFront, CloudWatch, ECS, EKS, CloudFormation, Auto Scaling, ELB)",
+      "Google Cloud Platform (App Engine, GKE, Cloud SQL, Cloud Storage)",
+      "Azure (App Service, Azure Storage, Azure Data Factory, Azure DevOps)",
+      "Docker",
+      "Kubernetes",
+      "PM2",
       "Nginx",
-      "Terraform (basic)"
-    ]
-  },
-  {
-    title: "Testing",
-    skills: [
-      "Jest",
-      "Supertest",
-      "Cypress",
-      "Mocha & Chai",
-      "Postman",
-      "Swagger",
-      "Insomnia"
-    ]
-  },
-  {
-    title: "CI/CD & Monitoring",
-    skills: [
+      "Ansible",
+      "Terraform (Basic)",
+      "Jenkins",
+      "Maven",
+      "Gradle",
       "GitHub Actions",
       "GitHub Webhooks",
-      "Sentry",
-      "AWS CloudWatch",
+      "CI/CD Pipelines"
+    ]
+  },
+  {
+    title: "Testing & QA",
+    skills: [
+      "JUnit",
+      "Mockito",
+      "Cucumber (BDD)",
+      "Selenium",
+      "JEST",
+      "Cypress",
+      "Mocha & Chai",
+      "Supertest",
+      "Postman",
+      "Swagger",
+      "Insomnia",
       "JMeter"
+    ]
+  },
+  {
+    title: "Monitoring & Logging",
+    skills: [
+      "ELK Stack (Elasticsearch, Logstash, Kibana)",
+      "Splunk",
+      "AWS CloudWatch",
+      "Sentry"
     ]
   },
   {
@@ -112,11 +134,19 @@ const skillCategories = [
     skills: [
       "JIRA",
       "Confluence",
+      "Bitbucket",
+      "Git",
       "Notion",
+      "Agile (Scrum)",
       "Lucidchart",
-      "Figma",
       "Draw.io",
-      "Agile (Scrum)"
+      "Figma"
+    ]
+  },
+  {
+    title: "Reporting & Analytics",
+    skills: [
+      "Jasper Reports"
     ]
   }
 ];

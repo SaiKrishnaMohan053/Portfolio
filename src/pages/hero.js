@@ -70,8 +70,8 @@ const Hero = () => {
               </Button>
               <Button
                 variant="outline-primary"
-                href="/assets/sr.Full_stack_developer.docx"
-                download="sr.Full_stack_developer.docx"
+                href="/assets/SR._JAVA_FULL_STACK_DEVELOPER_krishna_mohan.docx"
+                download="sr.Full_stack_developer.docxSR._JAVA_FULL_STACK_DEVELOPER_krishna_mohan.docx"
               >
                 Download CV
               </Button>
