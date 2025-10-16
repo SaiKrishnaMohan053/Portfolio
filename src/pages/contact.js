@@ -36,8 +36,8 @@ export default function Contact() {
     {
       icon: <Mail className="text-primary" size={24} />,
       title: "Email",
-      content: "krishnamohank1501@gmail.com",
-      link: "mailto:krishnamohank1501@gmail.com",
+      content: "saikrishnakolla93@gmail.com",
+      link: "mailto:saikrishnakolla93@gmail.com",
     },
     {
       icon: <Phone className="text-primary" size={24} />,
@@ -55,7 +55,7 @@ export default function Contact() {
       icon: <Linkedin className="text-primary" size={24} />,
       title: "LinkedIn",
       content: "Sai Krishna Mohan K",
-      link: "https://www.linkedin.com/in/sai-krishna-mohan-k/",
+      link: "https://www.linkedin.com/in/sai-krishna-kolla/",
     },
   ];
 

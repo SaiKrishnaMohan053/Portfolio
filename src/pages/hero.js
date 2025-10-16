@@ -56,9 +56,10 @@ const Hero = () => {
             </motion.h1>
 
             <motion.p variants={paragraphVariant} className="lead text-muted">
-              I bring 10+ years of expertise across insurance, fintech,
-              e-commerce, and retail, specializing in MERN stack, TypeScript,
-              and cloud-based architectures to deliver systems used by millions.
+              I bring 10+ years of experience delivering enterprise-grade applications across 
+              banking, fintech, healthcare, and retail. Skilled in Java, Spring Boot, React, 
+              Node.js, and AWS, I build scalable, secure, and high-performance systems 
+              that power global digital platforms.
             </motion.p>
 
             <motion.div variants={buttonsVariant} className="d-flex flex-wrap gap-3 mt-4">
@@ -71,7 +72,7 @@ const Hero = () => {
               <Button
                 variant="outline-primary"
                 href="/assets/SR._JAVA_FULL_STACK_DEVELOPER_krishna_mohan.docx"
-                download="sr.Full_stack_developer.docxSR._JAVA_FULL_STACK_DEVELOPER_krishna_mohan.docx"
+                download="Krishna_Mohan_Java_FullStack_Resume.docx"
               >
                 Download CV
               </Button>
@@ -86,7 +87,7 @@ const Hero = () => {
               >
                 <img
                   src="/assets/passport_photo.jpeg"
-                  alt="Sai Krishna Mohan"
+                  alt="Sai Krishna Mohan - Senior Java Full Stack Developer"
                   className="rounded-circle"
                   style={{
                     width: "100%",

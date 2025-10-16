@@ -30,7 +30,7 @@ const Footer = () => (
         </motion.div>
         <motion.div className="col-md-5 footer-section footer-contact" variants={item}>
           <h5 className="footer-title">Contact Info</h5>
-          <p>📧 krishnamohank1501@gmail.com</p>
+          <p>📧 saikrishnakolla93@gmail.com</p>
           <p>📞 +1 (251) 721-7855</p>
           <p>📍 United States</p>
         </motion.div>

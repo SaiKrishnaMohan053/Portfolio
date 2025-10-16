@@ -35,11 +35,13 @@ const About = () => {
         <motion.div variants={sectionTitleVariant} className="text-center mb-5 px-md-5">
           <h3 className="fw-bold text-dark mb-3">Introduction</h3>
           <p className="text-muted mx-auto about-text">
-            With over <strong>10 years</strong> of experience in insurance, fintech,
-            e-commerce, and retail, I craft robust, scalable, and secure web
-            solutions using the MERN stack, TypeScript, and cloud-native architectures.
-            I thrive on transforming complex requirements into intuitive digital
-            products that drive measurable business impact.
+            I’m a <strong>Senior Java Full Stack Developer</strong> with over <strong>10 years</strong> of 
+            experience designing, developing, and deploying scalable enterprise solutions 
+            across <strong>banking, fintech, healthcare, and retail</strong> domains. My core expertise 
+            lies in building <strong>Spring Boot microservices, React/Angular frontends, and AWS-based 
+            cloud-native systems</strong> that combine high performance, security, and maintainability. 
+            I thrive in transforming legacy monoliths into distributed architectures and automating 
+            delivery pipelines that support modern digital platforms.
           </p>
         </motion.div>
 
@@ -51,8 +53,9 @@ const About = () => {
               </div>
               <h5 className="fw-bold text-dark mb-2">Frontend Development</h5>
               <p className="text-muted small">
-                Building responsive, accessible interfaces with React, Redux,
-                and modern CSS frameworks to deliver seamless user experiences.
+                Creating responsive, accessible UIs with <strong>React 18</strong> and 
+                <strong> Angular 15+</strong>, integrating REST and GraphQL APIs for seamless 
+                real-time experiences using <strong>Redux Toolkit</strong> and <strong>TypeScript</strong>.
               </p>
             </div>
           </motion.div>
@@ -64,8 +67,9 @@ const About = () => {
               </div>
               <h5 className="fw-bold text-dark mb-2">Backend & APIs</h5>
               <p className="text-muted small">
-                Designing high-performance APIs with Node.js, Express, and
-                databases like MongoDB & MySQL to power scalable backends.
+                Engineering robust microservices with <strong>Java 17, Spring Boot 3, and Node.js</strong>, 
+                integrating <strong>Kafka</strong> for event-driven workflows and using <strong>PostgreSQL, 
+                Oracle, and MongoDB</strong> for optimized data persistence.
               </p>
             </div>
           </motion.div>
@@ -77,8 +81,7 @@ const About = () => {
               </div>
               <h5 className="fw-bold text-dark mb-2">Cloud & DevOps</h5>
               <p className="text-muted small">
-                Leveraging AWS (EC2, S3, Lambda), Docker, and CI/CD pipelines to
-                automate deployments and ensure production reliability.
+                Deploying and automating workloads on <strong>AWS (EKS, ECS, Lambda)</strong> and <strong>GCP</strong> using <strong>Docker, Kubernetes, Terraform, and Jenkins</strong> for CI/CD pipelines and infrastructure as code.
               </p>
             </div>
           </motion.div>
@@ -90,8 +93,8 @@ const About = () => {
               </div>
               <h5 className="fw-bold text-dark mb-2">Performance & Security</h5>
               <p className="text-muted small">
-                Implementing code optimization, testing, and secure coding
-                practices to deliver reliable, high-performance web applications.
+                Optimizing backend performance through <strong>JPA tuning, Redis caching, and async 
+                processing</strong>, while ensuring security using <strong>Spring Security (OAuth2/JWT)</strong> and observability via <strong>ELK Stack</strong> and <strong>CloudWatch</strong>.
               </p>
             </div>
           </motion.div>
